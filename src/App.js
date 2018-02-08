@@ -9,7 +9,7 @@ class App extends Component {
 
     inputField = (event) => {
       this.setState({
-          inputValue: event.target.value
+          userInput: event.target.value
       });
     };
 
@@ -37,11 +37,11 @@ class App extends Component {
                   <input
                       type="text"
                       onChange={this.inputField}
-                      value={this.state.inputValue || ''} />
+                      value={this.state.userInput || ''} />
               </form>
               <p className="u_input">
                   <span>The length of the string :  </span>
-                  <span>User INput: {this.state.inputValue} </span>
+                  <span>User INput: {this.state.userInput} </span>
                   <span> <strong>Length is : {strInput.length}</strong> </span>
               </p>
 

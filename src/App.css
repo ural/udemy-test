@@ -13,3 +13,8 @@
   padding: 12px 20px;
   background: #ccccdd;
 }
+.sup--sup p:first-child {
+  color: #f80;
+  font-weight: 600;
+  text-shadow: 1px 2px 2px #ddd;
+}
