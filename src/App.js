@@ -37,7 +37,7 @@ class App extends Component {
                   <input
                       type="text"
                       onChange={this.inputField}
-                      value={this.state.inputValue} />
+                      value={this.state.inputValue || ''} />
               </form>
               <p className="u_input">
                   <span>The length of the string :  </span>
