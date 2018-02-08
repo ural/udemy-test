@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Validation from './ValidationComponent';
+import Characters from './Characters/Characters';
 
 class App extends Component {
 
@@ -15,12 +16,29 @@ class App extends Component {
       });
     };
 
+    deleteChar = (index) => {
+        const inputText= this.state.userInput.split('');
+        inputText.splice(index, 1);
+        const updatedText = inputText.join('');
+        this.setState({userInput: updatedText});
+    };
+
   render() {
 
       let strInput = this.state.userInput;
+      let strArray = this.state.userInput.split('');
+
+      const outputChars = strArray.map((ch, index) => {
+          return  <Characters
+            key={index}
+            character={ch}
+            charClicked={() => this.deleteChar(index)}
+          />
+      });
 
     return (
       <div className="App">
+{/*
           <div className="instructions">
         <ol>
           <li>Create an input field (in App component) with a change listener which outputs the length of the entered text below it (e.g. in a paragraph).</li>
@@ -32,6 +50,7 @@ class App extends Component {
         </ol>
         <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
       </div>
+*/}
 
           <div className="sup--sup">
               <p>THIS IS WHERE IT&#39;S GOING</p>
@@ -42,7 +61,6 @@ class App extends Component {
                       value={this.state.userInput || ''} />
               </form>
               <p className="u_input">
-                  <span>The length of the string :  </span>
                   <span>User INput: {this.state.userInput} </span>
                   <span> <strong>Length is : {strInput.length}</strong> </span>
               </p>
@@ -50,6 +68,10 @@ class App extends Component {
               <Validation
                   str_length={strInput.length}
               />
+
+              <div>
+                  {outputChars}
+              </div>
 
           </div>
       </div>

@@ -4,9 +4,9 @@ const validationMessage = ( props ) => {
 
     let message = "";
 
-    if (props.str_length < 5 ) {
+    if (props.str_length <= 5 ) {
         message = "The text is too short";
-    } else if (props.str_length > 15) {
+    } else if (props.str_length >= 10) {
         message = "The text is too LONG";
     }
 
