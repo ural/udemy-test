@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
+    state = {
+        userInput: ''
+    };
+
+    inputField = (event) => {
+      this.setState({
+          inputValue: event.target.value
+      });
+    };
+
   render() {
+
+      let strInput = this.state.userInput;
+
     return (
       <div className="App">
+          <div className="instructions">
         <ol>
           <li>Create an input field (in App component) with a change listener which outputs the length of the entered text below it (e.g. in a paragraph).</li>
           <li>Create a new component (=> ValidationComponent) which receives the text length as a prop</li>
@@ -14,6 +29,23 @@ class App extends Component {
           <li>When you click a CharComponent, it should be removed from the entered text.</li>
         </ol>
         <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
+      </div>
+
+          <div className="sup--sup">
+              <p>THIS IS WHERE IT&#39;S GOING</p>
+              <form action="">
+                  <input
+                      type="text"
+                      onChange={this.inputField}
+                      value={this.state.inputValue} />
+              </form>
+              <p className="u_input">
+                  <span>The length of the string :  </span>
+                  <span>User INput: {this.state.inputValue} </span>
+                  <span> <strong>Length is : {strInput.length}</strong> </span>
+              </p>
+
+          </div>
       </div>
     );
   }
