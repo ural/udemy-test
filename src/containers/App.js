@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Aux';
+import withClass from '../hoc/withClass';
 
 class App extends PureComponent {
   constructor( props ) {
@@ -15,7 +16,7 @@ class App extends PureComponent {
         { id: 'vasdf1', name: 'Manu', age: 29 },
         { id: 'asdf11', name: 'Stephanie', age: 26 }
       ],
-      otherState: 'some other STATE value',
+      otherState: 'some other value',
       showPersons: false,
       toggleClicked: 0
     };
@@ -70,25 +71,24 @@ class App extends PureComponent {
     persons[personIndex] = person;
 
     this.setState( { persons: persons } );
-  };
+  }
 
   deletePersonHandler = ( personIndex ) => {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice( personIndex, 1 );
     this.setState( { persons: persons } );
-  };
+  }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState((prevState, props) => {
-        return {
-          showPersons: !doesShow,
-          toggleClicked: prevState.toggleClicked +1
-        }
+    this.setState( ( prevState, props ) => {
+      return {
+        showPersons: !doesShow,
+        toggleClicked: prevState.toggleClicked + 1
       }
-    );
-  };
+    } );
+  }
 
   render () {
     console.log( '[App.js] Inside render()' );
@@ -102,19 +102,18 @@ class App extends PureComponent {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => { this.setState( { showPersons: true } ) }}>Show Persons</button>
         <Cockpit
           appTitle={this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
-          clicked={this.togglePersonsHandler}
-          howManyTimes={this.state.toggleClicked}
-        />
+          clicked={this.togglePersonsHandler} />
         {persons}
-      </WithClass>
+      </Aux>
     );
+    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
 
-export default App;
+export default withClass( App, classes.App );
