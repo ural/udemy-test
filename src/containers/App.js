@@ -90,8 +90,6 @@ class App extends PureComponent {
     );
   };
 
-  
-
   render () {
     console.log( '[App.js] Inside render()' );
     let persons = null;
