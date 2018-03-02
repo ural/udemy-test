@@ -70,14 +70,14 @@ class App extends PureComponent {
     persons[personIndex] = person;
 
     this.setState( { persons: persons } );
-  }
+  };
 
   deletePersonHandler = ( personIndex ) => {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice( personIndex, 1 );
     this.setState( { persons: persons } );
-  }
+  };
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -88,7 +88,7 @@ class App extends PureComponent {
         }
       }
     );
-  }
+  };
 
   render () {
     console.log( '[App.js] Inside render()' );
