@@ -15,7 +15,7 @@ class App extends PureComponent {
         { id: 'vasdf1', name: 'Manu', age: 29 },
         { id: 'asdf11', name: 'Stephanie', age: 26 }
       ],
-      otherState: 'some other value',
+      otherState: 'some other STATE value',
       showPersons: false
     };
   }
